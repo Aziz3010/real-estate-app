@@ -9,9 +9,9 @@ import SearchFilters from '../Components/SearchFilters';
 import Property from '../Components/Property';
 import { baseUrl, fetchApi } from '../utils/fetchApi';
 
-const search = ({ properties }) => {
-    const [SearchFilters, setSearchFilters] = useState(false);
-    const Router = useRouter();
+const Search = ({ properties }) => {
+    const [searchFilters, setSearchFilters] = useState(false);
+    const router = useRouter();
 
     return (
         <Box>
@@ -25,16 +25,16 @@ const search = ({ properties }) => {
                 fontSize='lg'
                 justifyContent='center'
                 alignItems='center'
-                onClick={() => setSearchFilters(!SearchFilters) }
+                onClick={() => setSearchFilters(!searchFilters) }
             >
                 <Text>Search Property By Filters</Text>
                 <Icon paddingLeft='2' w='7' as={BsFilter} />
             </Flex>
 
-            { SearchFilters && <SearchFilters /> }
+            { searchFilters && <SearchFilters /> }
 
             <Text fontSize='2xl' padding='4' fontWeight='bold'>
-                Properties {Router.query.purpose}
+                Properties {router.query.purpose}
             </Text>
 
             <Flex flexWrap='wrap'>
@@ -81,6 +81,6 @@ export async function getServerSideProps({ query }) {
     };
 }
 
-export default search;
+export default Search;
 
 // stop vid 07:02:00
